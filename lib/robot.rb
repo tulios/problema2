@@ -21,8 +21,7 @@ class Robot
   def move! step
     raise "Wrong step! (#{step})" unless step =~ /^(L|R|M)+$/ or step =~ /^T\s\d+\s\d+$/
     if step =~ /^T\s\d+\s\d+$/
-      params = step.gsub(/T\s/, '').split(/\s/)
-      teleport params[0].to_i, params[1].to_i
+      teleport *step.gsub(/T\s/, '').split(/\s/).map {|e| e.to_i}
       
     else
       step.scan(/(\w)/).flatten.each {|side_or_movement| change_or_walk side_or_movement}
