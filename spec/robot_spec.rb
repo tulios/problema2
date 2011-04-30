@@ -93,6 +93,37 @@ describe Robot do
     
   end
   
+  context 'when goes outside the boundaries' do
+    
+    after :each do
+      lambda { robot.move!("MMMM") }.should raise_error
+    end
+    
+    it 'should raise exception if goes from the left to the right' do
+      robot = Robot.new 1, 1, 'E', Map.new("1 1")
+    end
+
+    it 'should raise exception if goes from the right to the left' do
+      robot = Robot.new 1, 1, 'W', Map.new("1 1")
+    end
+
+    it 'should raise exception if goes from the top to the bottom' do
+      robot = Robot.new 1, 1, 'S', Map.new("1 1")
+    end
+    
+    it 'should raise exception if goes from bottom to the top' do
+      robot = Robot.new 1, 1, 'N', Map.new("1 1")
+    end
+    
+  end
+  
+  it 'should return the whole position' do
+    Robot.new(2, 1, 'N', nil).position.should eql "2 1 N"
+    Robot.new(1, 2, 'S', nil).position.should eql "1 2 S"
+    Robot.new(2, 1, 'E', nil).position.should eql "2 1 E"
+    Robot.new(1, 2, 'W', nil).position.should eql "1 2 W"
+  end
+  
 end
 
 
