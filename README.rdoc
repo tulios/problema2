@@ -1,3 +1,5 @@
+= Problema
+
 Suponha que você precisa implementar um robo controlado pelos seguintes comandos:
 
 L - Virar 90 graus para a esquerda
@@ -18,3 +20,11 @@ O resultado final deve ser dado pelo robo para indicar sua posição e para onde
 2 4 E              # na posição 2 4, virado para East
 
 Assuma que, o quadrado, imediatamente ao norte de (x, y) é (x, y + 1)
+
+= Executando
+  
+  ./bin/move_the_robot spec/resource/inputs.txt
+  
+= Rodando os testes
+
+  rake
